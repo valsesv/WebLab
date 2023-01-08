@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторная работа 1</title>
+
+    <!-- Import styles-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JS library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+
+
+<body>
+<table border="1" cellpadding="0" cellspacing="0" width="100%" id="table">
+    <!-- Title-->
+  <tr>
+    <th class="header" colspan="4" class="info">
+      <span>Демидович Всеслав, P32091 <p class="option">Вариант№1207</p></span>
+    </th>
+  </tr>
+
+
+  <form id="js-form" name="form">
+    <tr>
+
+        <!-- Input X-->
+      <td width="20%" align="center" valign="top">
+        <p><label class="info">X:</label></p>
+        <span class="js-input">
+                <p>
+                    <input type="radio" name="choice-X" class="input-X" value="-2">-2
+                    <input type="radio" name="choice-X" class="input-X" value="-1.5">-1.5
+                    <input type="radio" name="choice-X" class="input-X" value="-1">-1
+                    <input type="radio" name="choice-X" class="input-X" value="-0.5">-0.5
+                </p>
+                <input type="radio" name="choice-X" class="input-X" value="0">0
+                <p>
+                    <input type="radio" name="choice-X" class="input-X" value="0.5"> 0.5
+                    <input type="radio" name="choice-X" class="input-X" value="1"> 1
+                    <input type="radio" name="choice-X" class="input-X" value="1.5"> 1.5
+                    <input type="radio" name="choice-X" class="input-X" value="2"> 2
+                </p>
+        </span>
+      </td>
+
+        <!-- Input y-->
+      <td width="20%" align="center" valign="top">
+        <p><label class="info">Y:</label></p>
+        <input type="text" name="choice-Y" placeholder="{-5..3}" id="input-Y" maxlength="5">
+      </td>
+
+        <!-- Input Y-->
+      <td width="20%" align="center" valign="top">
+        <span class="js-input ">
+            <p><label class="info">R:</label></p>
+                <input class="r-checkbox" name="choice-R" id="r-checkbox1" type="checkbox" value="1">1
+                <input class="r-checkbox" name="choice-R" id="r-checkbox2" type="checkbox" value="1.5">1.5
+                <input class="r-checkbox" name="choice-R" id="r-checkbox3" type="checkbox" value="2">2
+                <input class="r-checkbox" name="choice-R" id="r-checkbox4" type="checkbox" value="2.5"> 2.5
+                <input class="r-checkbox" name="choice-R" id="r-checkbox5" type="checkbox" value="3">3
+        </span>
+      </td>
+
+        <!--Chart Image-->
+      <td width="40%" align="center">
+        <img src="Images/areas.png" alt="Изображение не найдено" class="image">
+      </td>
+    </tr>
+
+      <!-- Submit button-->
+    <tr>
+      <td colspan="4" align="center">
+        <button class="btn" type="submit">
+          Submit
+        </button>
+      </td>
+    </tr>
+
+  </form>
+
+    <!--Results-->
+  <tr align="center" class="infoOfRequest">
+    <td width="10%">
+      Запрос
+    </td>
+    <td width="10%">
+      X
+      Y
+      R
+    </td>
+    <td width="20%">
+      Время
+    </td>
+    <td>
+      Результат и Время работы скрипта
+    </td>
+  </tr>
+
+</table>
+
+<script src="js/script.js"></script>
+</body>
+</html>

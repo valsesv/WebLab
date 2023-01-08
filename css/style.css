@@ -1,0 +1,59 @@
+.header{
+    font-family: cursive;
+    font-size: 36px;
+}
+
+.info{
+    font-family: cursive;
+    font-size: 	150%;
+    color: navajowhite;
+    margin	: 20%;
+}
+
+.input-X{
+    font-family: cursive;
+    color: navajowhite;
+    margin: 2%;
+}
+
+.r-checkbox{
+    font-family: cursive;
+    color: navajowhite;
+    margin: 5%;
+}
+
+.btn{
+    border-radius: 	10%;
+    color: navajowhite;
+    background-color: black;
+    background-size: 50%;
+    font-size: 	150%;
+}
+
+body{
+      background-image: url("/Images/background.jpg");
+    color: mediumspringgreen;
+}
+
+table{
+    border: 1px solid rgba(255, 255, 255);
+    border-radius: 5px;
+}
+span > p{
+    margin: 1%;
+}
+input:valid{
+    border: 2px  black;
+    color: dimgrey;
+}
+input[type="text"]::-webkit-input-placeholder {
+    color: dimgrey;
+}
+input[type="text"]::-moz-placeholder {
+    color: dimgrey;
+}
+.infoOfRequest{
+    color: white;
+    font-size: 130%;
+    font-family: cursive;
+}
