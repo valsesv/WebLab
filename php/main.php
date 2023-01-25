@@ -21,8 +21,9 @@ main();
 
 function main(): void
 {
+    session_start();
     $startTime = microtime(true);
-    //$countValues = $_GET['countValues'];
+    $countValues = $_GET['countValues'];
     $x = $_GET['x'];
     $y = $_GET['y'];
     $r = $_GET['r'];
@@ -31,7 +32,7 @@ function main(): void
     $duration = round( microtime(true) - $startTime,5);
 
     $arrayOfValues = array($x, $y, $r, $date, $duration, $result);
-    $_SESSION['value' /*. $countValues*/] = $arrayOfValues;
+    $_SESSION['value' . $countValues] = $arrayOfValues;
 
     echo $x, ' ', $y, ' ' , $r, ' ',  $date, ' ', $duration, ' ', $result, ' ';
 }

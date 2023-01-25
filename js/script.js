@@ -77,7 +77,7 @@ form.onsubmit = function (event) {
         //alert(arrayOfValues);
         createNewRow(arrayOfValues[0], arrayOfValues[1], arrayOfValues[2], arrayOfValues[3], arrayOfValues[4], arrayOfValues[5])
     }
-    xhr.open('GET', 'php/main.php?' + /*'countValues' + count +*/ 'x=' + getX() + '&y=' + getY() + '&r=' + getR());
+    xhr.open('GET', 'php/main.php?' + 'countValues=' + count + '&x=' + getX() + '&y=' + getY() + '&r=' + getR());
     xhr.send();
 }
 
@@ -104,11 +104,8 @@ function createNewRow(x, y, r, date, duration, result) {
 }
 
 
-/*window.onload = function () {
+window.onload = function () {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function (){
-        createNewRow(xhr.responseText)
-    }
     xhr.open('GET', 'php/data.php?', false);
     xhr.send();
 
@@ -121,4 +118,4 @@ function createNewRow(x, y, r, date, duration, result) {
             createNewRow(arrayOfValues[i], arrayOfValues[i + 1], arrayOfValues[i + 2], arrayOfValues[i + 3],arrayOfValues[i + 4],arrayOfValues[i + 5])
         }
     }
-}*/
+}
