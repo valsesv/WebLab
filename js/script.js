@@ -71,16 +71,17 @@ form.onsubmit = function (event) {
     }
 
     let xhr = new XMLHttpRequest();
-    let value_X = getX();
-    let value_Y = getY();
-    let value_R = getR();
-
-    xhr.open('GET', 'php/main.php?' + 'x=' + value_X + '&y=' + value_Y + '&r=' + value_R);
+    xhr.onload = function (){
+        let arrayOfValues = xhr.responseText;
+        arrayOfValues = arrayOfValues.split(' ');
+        //alert(arrayOfValues);
+        createNewRow(arrayOfValues[0], arrayOfValues[1], arrayOfValues[2], arrayOfValues[3], arrayOfValues[4], arrayOfValues[5])
+    }
+    xhr.open('GET', 'php/main.php?' + /*'countValues' + count +*/ 'x=' + getX() + '&y=' + getY() + '&r=' + getR());
     xhr.send();
-    alert(xhr.response + ' ' + xhr.responseText);
 }
 
-function createNewRow(response) {
+function createNewRow(x, y, r, date, duration, result) {
     let tableRef = document.getElementById("table");
     let row = document.createElement("tr");
     row.setAttribute('class', 'infoOfRequest table1');
@@ -92,19 +93,32 @@ function createNewRow(response) {
     let td4 = document.createElement('td');
     td1.innerHTML = count;
     count += 1;
-    let r = 0;
-    for(let i = 1; i <= 9; i++) {
-        if ($('#r-checkbox' + i).is(":checked"))
-        {
-            r = $('#r-checkbox' + i).val();
-            break
-        }
-    }
-    td2.innerHTML = $('.input-X:checked').val() + " " + $('#input-Y').val() + " " + r;
-    td3.innerHTML = new Date().toLocaleTimeString();
-    td4.innerHTML = response + " секунд";
+
+    td2.innerHTML = x + " " +y + " " + r;
+    td3.innerHTML = date;
+    td4.innerHTML = result + " " + duration + " секунд";
     row.append(td1);
     row.append(td2);
     row.append(td3);
     row.append(td4);
 }
+
+
+/*window.onload = function () {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function (){
+        createNewRow(xhr.responseText)
+    }
+    xhr.open('GET', 'php/data.php?', false);
+    xhr.send();
+
+    if (xhr.status !== 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
+    } else {
+        let arrayOfValues = xhr.responseText;
+        arrayOfValues = arrayOfValues.split(' ');
+        for (let i = 0; i < arrayOfValues.length - 1; i += 6) {
+            createNewRow(arrayOfValues[i], arrayOfValues[i + 1], arrayOfValues[i + 2], arrayOfValues[i + 3],arrayOfValues[i + 4],arrayOfValues[i + 5])
+        }
+    }
+}*/

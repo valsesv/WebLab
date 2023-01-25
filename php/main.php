@@ -3,11 +3,11 @@
 function checkArea($x, $y, $r) : bool
 {
     if ($x <= 0 && $y <= 0){
-        if ($x >= -$r/2 && $y >= $r)
+        if ($x >= -$r/2 && $y >= -$r)
             return true;
     }
     if ($x <= 0 && $y >= 0){
-        if ($x +$y <= $r)
+        if (-$x +$y <= $r)
             return true;
     }
     if ($x >= 0 && $y <= 0){
@@ -22,29 +22,16 @@ main();
 function main(): void
 {
     $startTime = microtime(true);
-    $response = "";
-
+    //$countValues = $_GET['countValues'];
     $x = $_GET['x'];
-    $response .= $x;
-    $response .= ";";
-
     $y = $_GET['y'];
-    $response .= $y;
-    $response .= ";";
-
     $r = $_GET['r'];
-    $response .= $r;
-    $response .= ";";
     $result = checkArea($x, $y, $r) ? 'true' : 'false';
-    $response .= $result;
-    $response .= ";";
+    $date = date("H:i:s");
+    $duration = round( microtime(true) - $startTime,5);
 
-    $response .= date("Y-m-d H:i:s");
-    $response .= ";";
+    $arrayOfValues = array($x, $y, $r, $date, $duration, $result);
+    $_SESSION['value' /*. $countValues*/] = $arrayOfValues;
 
-    $endTime = round( microtime(true) - $startTime,5);
-    $response .= $endTime;
-    $response .= "/";
-
-    echo $response;
+    echo $x, ' ', $y, ' ' , $r, ' ',  $date, ' ', $duration, ' ', $result, ' ';
 }
