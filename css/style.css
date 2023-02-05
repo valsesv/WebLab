@@ -1,6 +1,7 @@
 .header{
     font-family: cursive;
     font-size: 36px;
+    text-align: center;
 }
 
 .info{
@@ -22,38 +23,77 @@
     margin: 5%;
 }
 
-.btn{
-    border-radius: 	10%;
+.btn *{
+    margin-left: 1%;
+}
+
+button{
+    padding: 0.5% 1.5%;
     color: navajowhite;
-    background-color: black;
-    background-size: 50%;
+    background-color: #565353;
+    box-shadow: 2px 2px 2px 1px rgb(56, 54, 54);
+    border: 1px solid gray;
     font-size: 	150%;
 }
 
+button:hover{
+    background-color: cadetblue;
+    color: rgb(246, 244, 248);
+}
+
 body{
-      background-image: url("/Images/background.jpg");
+    background-color: #00000F;
+    /*background-image: url("/Images/background.jpg");*/
     color: mediumspringgreen;
 }
 
-table{
-    border: 1px solid rgba(255, 255, 255);
-    border-radius: 5px;
+#table{
+    border-radius: 10%;
 }
+
 span > p{
     margin: 1%;
 }
 input:valid{
-    border: 2px  black;
+    border: 2px  mediumspringgreen;
     color: dimgrey;
 }
 input[type="text"]::-webkit-input-placeholder {
-    color: dimgrey;
+    color: black;
 }
 input[type="text"]::-moz-placeholder {
-    color: dimgrey;
+    color: mediumspringgreen;
 }
 .infoOfRequest{
     color: white;
     font-size: 130%;
     font-family: cursive;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1vw;
+
+    width: 60%;
+    margin: 30px auto;
+}
+
+.grid-container > div {
+    font-size: 1.7vw;
+    padding: 10px;
+    text-align: center;
+
+    border-radius: 7px;
+}
+
+
+@media handheld, (max-width: 1200px) {
+    .grid-container{
+        width: 95%;
+    }
+
+    .grid-container > div {
+        font-size: 5vw;
+    }
 }
