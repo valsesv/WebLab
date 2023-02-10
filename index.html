@@ -19,42 +19,44 @@
           </tr>
 
         <!---->
-          <form id="main-form" action="php/main.php" method="get" onsubmit="validateVar()">
+          <form id="main-form" action="php/main.php" method="get" onsubmit="return setRequire()">
             <tr>
 
                 <!-- Input X-->
               <td width="20%" align="center" valign="top">
                 <p><label class="info">X:</label></p>
                 <span class="js-input">
-                    <input type="radio" name="x" class="input-X" value="-2" required>-2
-                    <input type="radio" name="x" class="input-X" value="-1.5">-1.5
-                    <input type="radio" name="x" class="input-X" value="-1">-1
-                    <input type="radio" name="x" class="input-X" value="-0.5">-0.5
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-2" required>-2
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-1.5">-1.5
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-1">-1
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-0.5">-0.5
                     <br>
-                    <input type="radio" name="x" class="input-X" value="0">0
-                    <input type="radio" name="x" class="input-X" value="0.5"> 0.5
-                    <input type="radio" name="x" class="input-X" value="1"> 1
-                    <input type="radio" name="x" class="input-X" value="1.5"> 1.5
-                    <input type="radio" name="x" class="input-X" value="2"> 2
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="0">0
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="0.5"> 0.5
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="1"> 1
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="1.5"> 1.5
+                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="2"> 2
                 </span>
+                  <p class="error" id="x-error"></p>
               </td>
 
                 <!-- Input y-->
               <td width="20%" align="center" valign="top">
                 <p><label class="info">Y:</label></p>
-                  <input type="text" name="y" placeholder="{-5..3}" maxlength="5" id="y" required>
+                  <input type="text" id="y-input" name="y" placeholder="{-5..3}" onkeyup="validateY()" maxlength="5" required>
+                  <p class="error" id="y-error"> </p>
               </td>
 
-                <!-- Input Y-->
+                <!-- Input R-->
               <td width="20%" align="center" valign="top">
                 <span class="js-input ">
                     <p><label class="info">R:</label></p>
-                        <input class="r-checkbox" name="r" id="r-checkbox1" type="checkbox" value="1" required> 1
-                        <input class="r-checkbox" name="r" id="r-checkbox2" type="checkbox" value="1.5"> 1.5
-                        <input class="r-checkbox" name="r" id="r-checkbox4" type="checkbox" value="2.5" > 2.5
-                        <input class="r-checkbox" name="r" id="r-checkbox5" type="checkbox" value="3">3
-                        <input class="r-checkbox" name="r" id="r-checkbox3" type="checkbox" value="2" > 2
-                        <br> Установите любой флажок
+                    <input class="r-checkbox" name="r" id="r-checkbox1" type="checkbox" onclick="validateR()" value="1"> 1
+                    <input class="r-checkbox" name="r" id="r-checkbox2" type="checkbox" onclick="validateR()"value="1.5"> 1.5
+                    <input class="r-checkbox" name="r" id="r-checkbox3" type="checkbox" onclick="validateR()"value="2" > 2
+                    <input class="r-checkbox" name="r" id="r-checkbox4" type="checkbox" onclick="validateR()"value="2.5" > 2.5
+                    <input class="r-checkbox" name="r" id="r-checkbox5" type="checkbox" onclick="validateR()" value="3">3
+                    <p class="error" id="r-error"></p>
                 </span>
               </td>
 
@@ -67,7 +69,7 @@
               <!-- Submit button-->
             <tr>
               <td class = "btn" colspan="4" align="center">
-                  <button type="submit" onclick='setRequire("r-checkbox")'> Отправить </button>
+                  <button type="submit"> Отправить </button>
                   <button type="reset"> Сбросить</button>
               </td>
             </tr>
@@ -78,6 +80,6 @@
 
         <!-- JS library-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        <script src="js/script.js">setRequire("r-checkbox")</script>
+        <script src="js/script.js">setRequire()</script>
     </body>
 </html>

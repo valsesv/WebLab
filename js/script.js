@@ -1,62 +1,74 @@
-function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+function validateX(){
+    let xRadio = $('.input-X');
+    let xError = document.getElementById('x-error');
+
+    const X_MIN = -2;
+    const X_MAX = 2;
+    let valX = $('.input-X:checked').val();
+
+    if (!xRadio.checked && (isNumeric(valX) && valX >= X_MIN && valX <= X_MAX)){
+        xError.innerHTML = "";
+        return true;
+    }
+
+    xError.innerHTML = "Select one number in range!";
+    return false;
 }
 
-function checkX() {
-    return $(".input-X:checked").length > 0 && isNumeric($(".input-X:checked").val());
-}
-
-function checkY() {
+function validateY(){
+    let yInput = $('#y-input');
+    let yError = document.getElementById('y-error');
     const Y_MIN = -5;
     const Y_MAX = 3;
 
-    let valY = getY();
-    return (isNumeric(valY) && valY >= Y_MIN && valY <= Y_MAX);
+    let valY = yInput.val().replace(',', '.');
+    let isValid = isNumeric(valY) && valY >= Y_MIN && valY <= Y_MAX;
+    if (!isValid){
+        yError.innerHTML = "Enter one number from -5 to 3!";
+    }
+    else{
+        yError.innerHTML ="";
+    }
+
+    return isValid;
 }
 
-function getY(){
-    let yField = $('#input-Y');
-    return yField.val().replace(',', '.');
-}
+function validateR(){
+    let rSelect = $('.r-checkbox');
+    let rError = document.getElementById('r-error');
+    const R_MIN = 1;
+    const R_MAX = 3;
 
-function checkR() {
-    let counter = 0;
-    for (let i = 1; i <= 5; i++) {
-        if ($('#r-checkbox' + i).is(":checked")) {
-            counter++;
-        }
-    }
-    return counter === 1;
-}
-
-function validateVar() {
-    let response = '';
-    if (!checkX()) {
-        response += "Не выбран X, ";
-    }
-    if (!checkY()) {
-        response += "Неправильно ввёден Y, ";
-    }
-    if (!checkR()) {
-        response += "Не выбран R";
-    }
-
-    let result = checkY() && checkR() && checkX();
-    if (!result){
-        //alert(response);
-    }
-    return result;
-}
-
-function setRequire(elClass) {
-    let el = document.getElementsByClassName(elClass);
-
-    let atLeastOneChecked = false; //at least one cb is checked
-    for (let i = 0; i < el.length; i++) {
-        if (el[i].checked === true) {
+    let atLeastOneChecked = false;
+    let isValid = true;
+    for (let i = 0; i < rSelect.length; i++) {
+        if (rSelect[i].checked === true) {
+            let valR = rSelect[i].value
+            isValid = isValid && (isNumeric(valR) && valR >= R_MIN && valR <= R_MAX);
             atLeastOneChecked = true;
         }
     }
 
-    el[0].required = atLeastOneChecked !== true;
+    if (!atLeastOneChecked || !isValid){
+        rError.innerHTML = "Select one number in range!";
+        return false;
+    }
+    else{
+        rError.innerHTML = "";
+        return true;
+    }
+}
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function setRequire() {
+    let isValidR = validateR();
+    let isValidX = validateX();
+    let isValidY = validateY();
+    if (isValidR && isValidX && isValidY){
+        return true;
+    }
+    return false;
 }

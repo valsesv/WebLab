@@ -7,7 +7,7 @@ function main(): void
     session_start();
     $x = $_GET['x'];
     $y = $_GET['y'];
-    str_replace(',', '.', $y);
+    $y = str_replace(',', '.', $y);
     $r = $_GET['r'];
     $startTime = microtime(true);
     $correct = checkValues($x, $y, $r);
@@ -16,7 +16,8 @@ function main(): void
         "x" => $x,
         "y" => $y,
         "r" => $r,
-        "is_hit" => $result
+        "is_hit" => $result,
+        "is_correct" => $correct
     );
 
     if (isset($_SESSION['saves'])) {
@@ -40,7 +41,8 @@ function main(): void
             <body>
                 <header class="header">
                     Демидович Всеслав, P32091
-                </header>';
+                </header>
+                <input type="button" onclick="history.back()" value="Назад" />';
 
         echo "<div class='grid-container'>
                 <div class='header'>X</div>
@@ -55,7 +57,7 @@ function main(): void
             <div>" . $element["x"] . "</div>
             <div>" . $element["y"] . "</div>
             <div>" . $element["r"] . "</div>
-            <div>" . ($element["is_hit"] ? "да" : "нет") . "</div>";
+            <div>" . ($element["is_correct"] ? ($element["is_hit"] ? "да" : "нет") : "Некорректные данные"). "</div>";
         }
         echo "</div>";
 
