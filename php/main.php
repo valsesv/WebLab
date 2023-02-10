@@ -10,23 +10,27 @@ function main(): void
     $y = str_replace(',', '.', $y);
     $r = $_GET['r'];
     $startTime = microtime(true);
-    $correct = checkValues($x, $y, $r);
-    $result = checkArea($x, $y, $r, $correct);
-    $curr = array(
-        "x" => $x,
-        "y" => $y,
-        "r" => $r,
-        "is_hit" => $result,
-        "is_correct" => $correct
-    );
 
     if (isset($_SESSION['saves'])) {
         $saves = unserialize($_SESSION['saves']);
     } else {
         $saves = array();
     }
-    $saves[] = $curr;
-    $_SESSION['saves'] = serialize($saves);
+
+    foreach ($r as $value){
+        $correct = checkValues($x, $y, $value);
+        $result = checkArea($x, $y, $value, $correct);
+
+        $curr = array(
+            "x" => $x,
+            "y" => $y,
+            "r" => $value,
+            "is_hit" => $result,
+            "is_correct" => $correct
+        );
+        $saves[] = $curr;
+        $_SESSION['saves'] = serialize($saves);
+    }
 
         echo '
         <!DOCTYPE html>
