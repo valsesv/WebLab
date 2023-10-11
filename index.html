@@ -13,8 +13,8 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" id="table">
             <!-- Title-->
           <tr>
-            <th class="header" colspan="4" class="info">
-              <span>Демидович Всеслав, P32091 <p class="option">Вариант№1207</p></span>
+            <th class="header" colspan="4">
+              <span>Демидович Всеслав, P33091 <p class="header">Вариант№2817</p></span>
             </th>
           </tr>
 
@@ -26,16 +26,17 @@
               <td width="20%" align="center" valign="top">
                 <p><label class="info">X:</label></p>
                 <span class="js-input">
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-2" required>-2
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-1.5">-1.5
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-1">-1
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="-0.5">-0.5
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-2">-2
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-1.5">-1.5
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-1">-1
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-2">-2
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-0.5">-0.5
                     <br>
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="0">0
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="0.5"> 0.5
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="1"> 1
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="1.5"> 1.5
-                    <input type="radio" name="x" class="input-X" onclick="validateX()" value="2"> 2
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="0">0
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="0.5"> 0.5
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="1"> 1
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="1.5"> 1.5
+                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="2"> 2
                 </span>
                   <p class="error" id="x-error"></p>
               </td>
@@ -43,26 +44,20 @@
                 <!-- Input y-->
               <td width="20%" align="center" valign="top">
                 <p><label class="info">Y:</label></p>
-                  <input type="text" id="y-input" name="y" placeholder="{-5..3}" onkeyup="validateY()" maxlength="5" required>
+                  <input type="text" id="y-input" name="y" placeholder="{-5..5}" onkeyup="validateY()" maxlength="10">
                   <p class="error" id="y-error"> </p>
               </td>
 
                 <!-- Input R-->
-              <td width="20%" align="center" valign="top">
-                <span class="js-input ">
+                <td width="20%" align="center" valign="top">
                     <p><label class="info">R:</label></p>
-                    <input class="r-checkbox" name="r[]" id="r-checkbox1" type="checkbox" onclick="validateR()" value="1"> 1
-                    <input class="r-checkbox" name="r[]" id="r-checkbox2" type="checkbox" onclick="validateR()"value="1.5"> 1.5
-                    <input class="r-checkbox" name="r[]" id="r-checkbox3" type="checkbox" onclick="validateR()"value="2" > 2
-                    <input class="r-checkbox" name="r[]" id="r-checkbox4" type="checkbox" onclick="validateR()"value="2.5" > 2.5
-                    <input class="r-checkbox" name="r[]" id="r-checkbox5" type="checkbox" onclick="validateR()" value="3">3
-                    <p class="error" id="r-error"></p>
-                </span>
-              </td>
+                    <input type="text" id="r-input" name="r" placeholder="{2..5}" onkeyup="validateY()" maxlength="10">
+                    <p class="error" id="r-error"> </p>
+                </td>
 
                 <!--Chart Image-->
               <td width="40%" align="center">
-                <img src="Images/areas.png" alt="Изображение не найдено" class="image">
+                <img src="Images/img.png" alt="Изображение не найдено" class="image">
               </td>
             </tr>
 

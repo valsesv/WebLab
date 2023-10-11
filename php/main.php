@@ -9,6 +9,7 @@ function main(): void
     $y = $_GET['y'];
     $y = str_replace(',', '.', $y);
     $r = $_GET['r'];
+    $r = str_replace(',', '.', $r);
     $startTime = microtime(true);
 
     if (isset($_SESSION['saves'])) {
@@ -17,14 +18,14 @@ function main(): void
         $saves = array();
     }
 
-    foreach ($r as $value){
-        $correct = checkValues($x, $y, $value);
-        $result = checkArea($x, $y, $value, $correct);
+    foreach ($x as $value){
+        $correct = checkValues($value, $y, $r);
+        $result = checkArea($value, $y, $r, $correct);
 
         $curr = array(
-            "x" => $x,
+            "x" => $value,
             "y" => $y,
-            "r" => $value,
+            "r" => $r,
             "is_hit" => $result,
             "is_correct" => $correct
         );
@@ -44,7 +45,7 @@ function main(): void
             </head>
             <body>
                 <header class="header">
-                    Демидович Всеслав, P32091
+                    Демидович Всеслав, P33091
                 </header>
                 <input type="button" onclick="history.back()" value="Назад" />';
 
@@ -68,7 +69,7 @@ function main(): void
         $date = date("H:i:s");
         $duration = round(microtime(true) - $startTime, 5);
 
-        echo "Текущая дата: " . $date . "<br>";
+        echo "Текущая время: " . $date . "<br>";
         echo "Время работы скрипта: " . $duration;
 
         echo '
@@ -88,7 +89,7 @@ function main(): void
 function checkValues($x, $y, $r) : bool{
     return isset($x) && isset($y) && isset($r)
         && is_numeric($x) && is_numeric($y) && is_numeric($r)
-        && -2 <= $x and $x <= 2 and -5 <= $y and $y <= 3 and 1 <= $r and $r <= 3;
+        && -2 <= $x and $x <= 2 and -5 <= $y and $y <= 5 and 2 <= $r and $r <= 5;
 }
 
 function checkArea($x, $y, $r, $correct) : bool
@@ -96,17 +97,15 @@ function checkArea($x, $y, $r, $correct) : bool
     if (!$correct)
         return false;
 
+    if ($x >= 0 && $y >= 0) {
+        return $x <= $r && $y <= $r;
+    }
+
     if ($x <= 0 && $y <= 0){
-        if ($x >= -$r / 2 && $y >= -$r)
-            return true;
+        return $x +$y <= $r;
     }
-    if ($x <= 0 && $y >= 0){
-        if (-$x +$y <= $r)
-            return true;
-    }
-    if ($x >= 0 && $y <= 0){
-        if ($x * $x + $y * $y <= $r*$r)
-            return true;
+    if ($y > 0 && $x < 0){
+        return $x * $x + $y * $y <= $r*$r;
     }
     return false;
 }
