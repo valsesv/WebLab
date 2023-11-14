@@ -9,15 +9,6 @@
     </head>
 
     <body>
-        <div class="header">
-            <h2>
-
-            </h2>
-            <h3>
-                Variant 1110220
-            </h3>
-        </div>
-
         <table border="0" cellpadding="0" cellspacing="0" width="100%" id="table">
             <!-- Title-->
             <tr>
@@ -27,58 +18,93 @@
             </tr>
 
             <!---->
-            <form id="main-form"  method="get">
+            <form id="main-form"  method="post">
                 <tr>
                     <!-- Input X-->
                     <td width="20%" align="center" valign="top">
                         <p><label class="info">X:</label></p>
-                        <span class="js-input">
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-2">-2
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-1.5">-1.5
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-1">-1
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-2">-2
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="-0.5">-0.5
-                    <br>
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="0">0
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="0.5"> 0.5
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="1"> 1
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="1.5"> 1.5
-                    <input type="checkbox" name="x[]" class="y-input" onclick="validateX()" value="2"> 2
-                </span>
+                        <label>
+                            <select id="x-input">
+                                <option class="input-data" onclick="validateX()" value="-4">-4</option>
+                                <option class="input-data" onclick="validateX()" value="-3">-3</option>
+                                <option class="input-data" onclick="validateX()" value="-2">-2</option>
+                                <option class="input-data" onclick="validateX()" value="-1">-1</option>
+                                <option class="input-data" onclick="validateX()" value="0">0</option>
+                                <option class="input-data" onclick="validateX()" value="1">1</option>
+                                <option class="input-data" onclick="validateX()" value="2">2</option>
+                                <option class="input-data" onclick="validateX()" value="3">3</option>
+                                <option class="input-data" onclick="validateX()" value="4">4</option>
+                            </select>
+                        </label>
                         <p class="error" id="x-error"></p>
                     </td>
 
                     <!-- Input y-->
                     <td width="20%" align="center" valign="top">
                         <p><label class="info">Y:</label></p>
-                        <input type="text" id="y-input" name="y" placeholder="{-3..3}" onkeyup="validateY()" maxlength="10">
+                        <input type="text" id="y-input" placeholder="{-3..3}" onkeyup="validateY()" maxlength="10">
                         <p class="error" id="y-error"> </p>
                     </td>
 
                     <!-- Input R-->
                     <td width="20%" align="center" valign="top">
                         <p><label class="info">R:</label></p>
-                        <input type="text" id="r-input" name="r" placeholder="{2..5}" onkeyup="validateY()" maxlength="10">
+                        <label>
+                            <select id = "r-input">
+                                <option class="input-data" onclick="validateR()" value="1">1</option>
+                                <option class="input-data" onclick="validateR()" value="1.5">1.5</option>
+                                <option class="input-data" onclick="validateR()" value="2">2</option>
+                                <option class="input-data" onclick="validateR()" value="2.5">2.5</option>
+                                <option class="input-data" onclick="validateR()" value="3">3</option>
+                            </select>
+                        </label>
                         <p class="error" id="r-error"> </p>
                     </td>
 
                     <!--Chart Image-->
                     <td width="40%" align="center">
-                        <img src="images/img.png" alt="Image is not found" class="image">
+                        <img src="images/area.png" alt="Image is not found" width="300" height="300">
                     </td>
                 </tr>
 
                 <!-- Submit button-->
                 <tr>
                     <td class = "btn" colspan="4" align="center">
-                        <button type="submit"> Send </button>
                         <button type="reset"> Reset </button>
+                        <button type="submit"> Send </button>
                     </td>
                 </tr>
 
             </form>
 
+            <tr align="center" class="infoOfRequest">
+                <th>
+                    <td width="10%">
+                        X
+                    </td>
+                    <td width="10%">
+                        Y
+                    </td>
+                    <td width="10%">
+                        R
+                    </td>
+            </tr>
+
+            <tr align="center" class="infoOfRequest">
+                <td>
+                    Current time
+                </td>
+            </tr>
+            <tr align="center" class="infoOfRequest">
+                <td>
+                    Script work time
+                </td>
+            </tr>
+
         </table>
 
+        <!-- JS library-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="js/script.js">CheckValidation()</script>
     </body>
 </html>

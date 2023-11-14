@@ -1,5 +1,5 @@
 .header{
-    font-family: serifr;
+    font-family: serif;
     font-size: 24px;
     text-align: center;
 }
@@ -11,13 +11,7 @@
     margin	: 20%;
 }
 
-.input-X{
-    font-family: cursive;
-    color: navajowhite;
-    margin: 2%;
-}
-
-.r-checkbox{
+.input-data{
     font-family: cursive;
     color: navajowhite;
     margin: 5%;
