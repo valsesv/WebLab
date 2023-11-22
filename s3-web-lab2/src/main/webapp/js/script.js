@@ -60,6 +60,7 @@ function loadHistory() {
         success: function (data) {
             // $("#result-div").empty();
             $.each(data, function (index, responseData) {
+                AddPointNormalized(responseData.x, responseData.y, responseData.R);
                 const content = `<tr>
                      <td>${responseData.x}</td>
                      <td>${responseData.y}</td>
@@ -181,17 +182,7 @@ $(document).ready(function () {
             const y = event.offsetY;
 
             const R = R_button.val();
-
-            let point = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "circle"
-            );
-            point.setAttribute("cx", x);
-            point.setAttribute("cy", y);
-            point.setAttribute("r", "3");
-            point.setAttribute("fill", "blue");
-
-            $("svg").append(point);
+            AddPoint(x, y);
 
             let normalizedX = (((x - 200) * 2 * R) / 300).toFixed(2);
             let normalizedY = (((200 - y) * 2 * R) / 300).toFixed(2);
@@ -206,3 +197,22 @@ $(document).ready(function () {
         }
     });
 });
+
+function AddPointNormalized(x, y, R){
+    x = x * 300 / 2 / R + 200;
+    y = (y * 300 / 2 / R - 200) * -1;
+    AddPoint(x, y)
+}
+
+function AddPoint(x, y){
+    let point = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+    point.setAttribute("cx", x);
+    point.setAttribute("cy", y);
+    point.setAttribute("r", "3");
+    point.setAttribute("fill", "blue");
+
+    $("svg").append(point);
+}
