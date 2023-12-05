@@ -52,6 +52,18 @@ function areaCheckGetRequest(data, redirectToResult) {
     });
 }
 
+function clearHistoryRequestServlet(){
+    $.ajax({
+        url: "/s3-web-lab2/clearHistory",
+        type: "GET",
+        success: function (data) {
+        },
+        error: function (xhr, status, error) {
+            console.error("Error: " + error);
+        },
+    });
+}
+
 function loadHistory() {
     $.ajax({
         url: "/s3-web-lab2/loadHistory",
@@ -145,6 +157,7 @@ $(document).ready(function () {
         setTimeout(function () {
             removeColorClick("clear-table", "green");
         }, 250);
+        clearHistoryRequestServlet();
     });
 
     $(".x_val").click(function (event) {
