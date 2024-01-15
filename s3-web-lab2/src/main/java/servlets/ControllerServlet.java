@@ -21,8 +21,4 @@ public class ControllerServlet extends HttpServlet {
             request.getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-    }
 }

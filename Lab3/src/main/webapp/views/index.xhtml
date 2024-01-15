@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Start page</title>
+    <h:outputStylesheet name="cssStyles/indexStyle.css" />
+    <h:outputScript library="js" name="clock.js"/>
+</h:head>
+
+<h:body>
+    <div class="header">
+        <h:panelGroup>
+            <h2>Lab №3</h2>
+            <br/>
+            Demidovich Vseslav, P33091
+            <br/>
+            Variant №33202
+        </h:panelGroup>
+    </div>
+    <br/>
+    <div class="mainStruct">
+        <h1 id="clock">00:00:00</h1>
+        <h:button class="bigButtons" outcome="change_to_main" value="Main Page">
+        </h:button>
+    </div>
+</h:body>
+</html>
