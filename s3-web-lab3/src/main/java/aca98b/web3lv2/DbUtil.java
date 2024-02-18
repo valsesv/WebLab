@@ -38,17 +38,6 @@ public class DbUtil {
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
 
-
-//        try{
-//            String url = "jdbc:postgresql://localhost:5432/testdb";
-//            String user = "user12";
-//            String password = "34klq*";
-//
-//            connection = DriverManager.getConnection(url, user, password);
-//
-//        } catch (SQLException ex) {
-//            Logger lgr = Logger.getLogger(DbUtil.class.getName());
-//            lgr.log(Level.SEVERE, ex.getMessage(), ex);
 //        }
     }
 

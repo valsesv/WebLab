@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <link rel="stylesheet" href="css/StartPage.css">
+</head>
+<body>
+    <div id="startPage">
+        <header>
+            <h1 class="center">{{ fullName }}, {{ groupNumber }}</h1>
+            <nav>
+                <ul>
+                    <li>Variant: {{ variantNumber }}</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2 class="login-header">Login</h2>
+            <form @submit.prevent="login" class="login-form">
+                <div class="input-group">
+                    <input type="text" v-model="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" v-model="password" placeholder="Password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit">Login</button>
+                    <button @click="register">Register</button>
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="js/startPage.js"></script>
+</body>
+</html>
