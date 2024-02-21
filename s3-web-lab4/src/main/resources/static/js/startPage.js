@@ -10,7 +10,7 @@ const startPage = new Vue({
     },
     methods: {
         login() {
-            //this.$router.push('/');
+            this.$router.push('/main');
 
             this.isLoggedIn = true;
         },

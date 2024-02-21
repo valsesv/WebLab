@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background-color: #888; !* Set the background color to a light gray *!*/
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center; /* Center align the content */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+main {
+    padding: 20px;
+    box-sizing: border-box; /* Include padding and border in the width */
+    margin-top: 100px; /* Add some space between header and main content */
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 200px;
+    padding: 8px;
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    flex-grow: 1;
+}
+
+.header-right {
+    margin-left: 20px; /* Add spacing between header content and logout button */
+}
+
+line {
+    stroke: black;
+}
+
+text {
+    fill: black;
+}
+
+/* Geometry color */
+polygon, path {
+    fill: #4467e3;
+    stroke: black;
+    stroke-width: 1;
+}
+
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add some space between header and content */
+}
+
+/* Options Section */
+.options-section {
+    flex-basis: 30%; /* Adjust the width of the options section */
+    padding: 10px;
+    background-color: #f0f0f0; /* Light gray background color */
+}
+
+/* Image Section */
+.image-section {
+    flex-basis: 60%; /* Adjust the width of the image section */
+    padding: 10px;
+}
+
+/* Table Section */
+.table-section {
+    margin-top: 20px; /* Add some space between content and table */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}

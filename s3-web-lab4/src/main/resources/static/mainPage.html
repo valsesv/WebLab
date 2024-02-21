@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
@@ -8,6 +8,117 @@
     <link rel="stylesheet" href="css/MainPage.css">
 </head>
 <body>
+    <div id="mainPage">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>{{ fullName }}, {{ groupNumber }}</h1>
+                    <nav>
+                        <ul>
+                            <li>Variant: {{ variantNumber }}</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <!-- Logout button -->
+                    <button @click="logout">Logout</button>
+                </div>
+            </div>
+        </header>
 
+        <!-- Content Section -->
+        <div class="content-section">
+            <!-- Options Section -->
+            <div class="options-section">
+                <p>Select X:</p>
+                <div>
+                    <label v-for="xCoord in xCoordinates" :key="xCoord">
+                        <input type="radio" v-model="xCoordinate" :value="xCoord">
+                        {{ xCoord }}
+                    </label>
+                </div>
+
+                <p>Select Y:</p>
+                <input type="number" v-model.number="yCoordinate" :placeholder="'Enter from ' + yMin + ' to ' + yMax">
+
+                <p>Select R:</p>
+                <div>
+                    <label v-for="rCoord in radiusOptions" :key="rCoord">
+                        <input type="radio" v-model="radius" :value="rCoord">
+                        {{ rCoord }}
+                    </label>
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <div class="image-section">
+                <div id="svgContainer">
+                    <svg id="coordinatePanel" width="400" height="400">
+                        <!-- Horizontal axis -->
+                        <line x1="0" y1="200" x2="400" y2="200" stroke="white" stroke-width="2"/>
+                        <!-- Vertical axis -->
+                        <line x1="200" y1="0" x2="200" y2="400" stroke="white" stroke-width="2"/>
+                        <!-- Arrows -->
+                        <polygon points="400,200 390,195 390,205" fill="white"/>
+                        <polygon points="200,0 195,10 205,10" fill="white"/>
+
+                        <!-- Quarter circle -->
+                        <path d="M200,200 L350,200 A140,140 0 0,1 200,350 Z" fill="#1c1326" stroke="white" stroke-width="1"/>
+                        <!-- Rectangle -->
+                        <polygon points="200,125 350,125 350,200 200,200" fill="#1c1326" stroke="white" stroke-width="1"/>
+                        <!-- Triangle -->
+                        <polygon points="200,125 200,200 125,200" fill="#1c1326" stroke="white" stroke-width="1"/>
+
+                        <!-- X-axis markings -->
+                        <line x1="50" y1="195" x2="50" y2="205" stroke="white" stroke-width="2"/>
+                        <line x1="125" y1="195" x2="125" y2="205" stroke="white" stroke-width="2"/>
+                        <line x1="275" y1="195" x2="275" y2="205" stroke="white" stroke-width="2"/>
+                        <line x1="350" y1="195" x2="350" y2="205" stroke="white" stroke-width="2"/>
+
+                        <!-- Y-axis markings -->
+                        <line x1="195" y1="50" x2="205" y2="50" stroke="white" stroke-width="2"/>
+                        <line x1="195" y1="125" x2="205" y2="125" stroke="white" stroke-width="2"/>
+                        <line x1="195" y1="275" x2="205" y2="275" stroke="white" stroke-width="2"/>
+                        <line x1="195" y1="350" x2="205" y2="350" stroke="white" stroke-width="2"/>
+
+                        <!-- Text labels -->
+                        <text class="svgR" id="R1" x="180" y="55" font-size="13" fill="ghostwhite">R</text>
+                        <text class="svgRd2" id="R2" x="173" y="129" font-size="13" fill="ghostwhite">R/2</text>
+                        <text class="svg-Rd2" id="R3" x="169" y="279" font-size="13" fill="ghostwhite">-R/2</text>
+                        <text class="svg-R" id="R4" x="180" y="355" font-size="13" fill="ghostwhite">-R</text>
+
+                        <text class="svg-R" id="R5" x="45" y="220" font-size="13" fill="ghostwhite">-R</text>
+                        <text class="svg-Rd2" id="R6" x="110" y="220" font-size="13" fill="ghostwhite">-R/2</text>
+                        <text class="svgRd2" id="R7" x="265" y="220" font-size="13" fill="ghostwhite">R/2</text>
+                        <text class="svgR" id="R8" x="345" y="220" font-size="13" fill="ghostwhite">R</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <table>
+                <thead>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Result</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(result, index) in results" :key="index">
+                    <td>{{ result.xCoordinate }}</td>
+                    <td>{{ result.yCoordinate }}</td>
+                    <td>{{ result.radius }}</td>
+                    <td>{{ result.result }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/mainPage.js"></script>
 </body>
 </html>
