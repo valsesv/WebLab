@@ -11,15 +11,30 @@ new Vue({
         yMin: -3,
         yMax: 3,
         radiusOptions: [ -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2],
-        results: []
+        results: [],
+        alertMessage: ''
     },
     methods: {
         checkPoint() {
-            // Implement the logic to check if the point falls within the area
-            // Add the result to the results array
+            if (!this.xCoordinate) {
+                this.alertMessage = 'Please select X coordinate.';
+                return;
+            }
+
+            if (this.yCoordinate === '' || isNaN(this.yCoordinate) || this.yCoordinate < -3 || this.yCoordinate > 3) {
+                this.alertMessage = 'Y coordinate must be between -3 and 3.';
+                return;
+            }
+
+            if (!this.radius) {
+                this.alertMessage = 'Please select R coordinate.';
+                return;
+            }
+
+            this.alertMessage = '';
         },
         logout() {
-            // Implement the logout functionality
+            window.location.href = "index.html";
         }
     }
 });

@@ -10,8 +10,7 @@ const startPage = new Vue({
     },
     methods: {
         login() {
-            this.$router.push('/main');
-
+            window.location.href = "mainPage.html";
             this.isLoggedIn = true;
         },
         register() {

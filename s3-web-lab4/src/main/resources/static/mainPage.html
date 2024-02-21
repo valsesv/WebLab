@@ -49,6 +49,14 @@
                         {{ rCoord }}
                     </label>
                 </div>
+
+                <br>
+
+                <!-- Button for checking coordinates -->
+                <div class="button-wrapper">
+                    <button @click="checkPoint">Check </button>
+                    <p class="alert-text" v-if="alertMessage">{{ alertMessage }}</p>
+                </div>
             </div>
 
             <!-- Image Section -->
