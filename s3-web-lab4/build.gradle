@@ -17,14 +17,6 @@ repositories {
 }
 
 dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-//    implementation 'org.springframework.boot:spring-boot-starter-web'
-//    implementation 'org.springframework.boot:spring-boot-starter-web-services'
-//    implementation 'org.springframework.session:spring-session-core'
-//    runtimeOnly 'com.mysql:mysql-connector-j'
-//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
     implementation 'org.xerial:sqlite-jdbc:3.42.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

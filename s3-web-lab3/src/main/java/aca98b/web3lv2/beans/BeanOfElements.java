@@ -32,12 +32,6 @@ import java.security.NoSuchAlgorithmException;
 @Named
 @SessionScoped
 public class BeanOfElements implements Serializable {
-    @Inject
-    private XBean xBean;
-    @Inject
-    private YBean yBean;
-    @Inject
-    private RBean rBean;
     private List<OneElement> listOfElements = new ArrayList<>();
     private AreaCheck areaCheck = new AreaCheck();
     private float[] arrayOfR = {1.0f, 1.5f, 2.0f, 2.5f, 3.0f};

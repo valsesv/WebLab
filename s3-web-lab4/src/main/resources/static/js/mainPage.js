@@ -30,8 +30,37 @@ new Vue({
                 this.alertMessage = 'Please select R coordinate.';
                 return;
             }
-
             this.alertMessage = '';
+
+            const data = {
+                x: this.xCoordinate,
+                y: this.yCoordinate,
+                r: this.radius
+            };
+
+            // Make an HTTP POST request to your Spring backend
+            fetch('/sendDataToBackend', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle the successful response from the backend
+                    this.alertMessage = data;
+                })
+                .catch(error => {
+                    // Handle errors if the request fails
+                    this.alertMessage = 'Failed to send data to the server.';
+                    console.error('Error:', error);
+                });
         },
         logout() {
             window.location.href = "index.html";
