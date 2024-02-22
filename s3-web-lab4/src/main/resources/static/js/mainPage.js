@@ -64,6 +64,25 @@ new Vue({
         },
         logout() {
             window.location.href = "index.html";
+        },
+        getPoints(){
+            fetch(`/getResultElementsByUsername?username=${this.username}`, {
+                method: 'GET',
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle the successful response from the backend
+                    this.results = data;
+                })
+                .catch(error => {
+                    // Handle errors if the request fails
+                    console.error('Error:', error);
+                });
         }
     }
 });

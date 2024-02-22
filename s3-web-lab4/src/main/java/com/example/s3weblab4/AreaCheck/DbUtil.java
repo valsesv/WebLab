@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//@SessionScoped
 public class DbUtil {
     private static String url = "jdbc:sqlite:aca98b";
 
@@ -28,8 +27,8 @@ public class DbUtil {
                         + "y FLOAT NOT NULL,"
                         + "r FLOAT NOT NULL,"
                         + "result TEXT NOT NULL,"
-                        + "time TEXT NOT NULL,"
-                        + "scriptTime TEXT NOT NULL)";
+                        + "username TEXT NOT NULL)";
+
                 statement.executeUpdate(createTableSql);
             }
 
