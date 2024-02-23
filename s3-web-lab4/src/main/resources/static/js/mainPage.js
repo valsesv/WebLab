@@ -10,14 +10,36 @@ var startPage = new Vue({
         xCoordinates: [ -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2],
         yMin: -3,
         yMax: 3,
-        radiusOptions: [ -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2],
+        radiusOptions: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4],
         results: [],
         alertMessage: '',
         username: localStorage.getItem('username')
     },
     methods: {
+        clickOnImage() {
+            // Get the clicked position relative to the SVG container
+            const svgContainer = document.getElementById('coordinatePanel');
+            const svgRect = svgContainer.getBoundingClientRect();
+            const offsetX = event.clientX - svgRect.left;
+            const offsetY = event.clientY - svgRect.top;
+
+            // Calculate x and y coordinates based on the clicked position
+            const R = this.radius;
+            const x = ((offsetX - 200) * R / 150).toFixed(2);
+            const y = ((200 - offsetY) * R / 150).toFixed(2);
+
+            // Set xCoordinate and yCoordinate
+            this.xCoordinate = x;
+            this.yCoordinate = y;
+
+            this.checkPoint();
+
+            // clear data
+            this.xCoordinate = '';
+            this.yCoordinate = '';
+        },
         checkPoint() {
-            if (isNaN(this.xCoordinate)) {
+            if (this.xCoordinate === null || this.xCoordinate === '') {
                 this.alertMessage = 'Please select X coordinate.';
                 return;
             }
@@ -27,7 +49,7 @@ var startPage = new Vue({
                 return;
             }
 
-            if (isNaN(this.radius)) {
+            if (this.radius === null || this.radius === '') {
                 this.alertMessage = 'Please select R coordinate.';
                 return;
             }

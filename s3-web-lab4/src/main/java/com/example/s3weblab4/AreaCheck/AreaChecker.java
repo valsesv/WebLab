@@ -18,7 +18,7 @@ public class AreaChecker {
             }
         }
         if (x <= 0 && y >= 0) {
-            if (-x <= r / 2 && y <= r / 2 && -x + y <= r) {
+            if (y < x + r / 2) {
                 resultF = "true";
             }
         }

@@ -62,7 +62,7 @@
             <!-- Image Section -->
             <div class="image-section">
                 <div id="svgContainer">
-                    <svg id="coordinatePanel" width="400" height="400">
+                    <svg id="coordinatePanel" width="400" height="400" @click="clickOnImage">
                         <!-- Horizontal axis -->
                         <line x1="0" y1="200" x2="400" y2="200" stroke="white" stroke-width="2"/>
                         <!-- Vertical axis -->
@@ -122,10 +122,12 @@
                 </thead>
                 <tbody>
                 <tr v-for="(result, index) in results" :key="index">
-                    <td>{{ result.coordinates.x }}</td>
-                    <td>{{ result.coordinates.y }}</td>
-                    <td>{{ result.coordinates.r }}</td>
-                    <td>{{ result.result }}</td>
+                    <template v-if="result.coordinates.r === radius">
+                        <td>{{ result.coordinates.x }}</td>
+                        <td>{{ result.coordinates.y }}</td>
+                        <td>{{ result.coordinates.r }}</td>
+                        <td>{{ result.result }}</td>
+                    </template>
                 </tr>
                 </tbody>
             </table>
