@@ -17,24 +17,22 @@ import java.util.List;
 public class ResultElementController {
 
     @GetMapping("/getResultElementsByUsername")
-    public ResponseEntity<List<ResultElement>> getResults(@RequestParam String username) throws SQLException {
+    public ResponseEntity<?> getResults(@RequestParam String username) throws SQLException {
         List<ResultElement> resultElements = getResultElementsByUsername(username);
-        return new ResponseEntity<>(resultElements, HttpStatus.OK);
+        return ResponseEntity.ok().body(resultElements);
     }
 
     public List<ResultElement> getResultElementsByUsername(String username) throws SQLException {
         List<ResultElement> resultList = new ArrayList<>();
 
         // SQL query to retrieve ResultElements for a given username
-        String sql = "SELECT coordinates_x, coordinates_y, result FROM result_elements WHERE username = ?";
+        String sql = "SELECT x, y, r, result FROM result_elements WHERE username = ?";
 
         try (Connection conn = DriverManager.getConnection(DbData.url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // Set the username parameter
-            pstmt.setString(1, username);
-
             // Execute the query
+            pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
 
             // Iterate through the result set and create ResultElement objects
@@ -43,12 +41,9 @@ public class ResultElementController {
                 coordinates.x = rs.getFloat("x");
                 coordinates.y = rs.getFloat("y");
                 coordinates.r = rs.getFloat("r");
-                coordinates.username = rs.getString("username");
                 String result = rs.getString("result");
 
                 ResultElement resultElement = new ResultElement(coordinates, result);
-
-                // Add the result element to the list
                 resultList.add(resultElement);
             }
         }

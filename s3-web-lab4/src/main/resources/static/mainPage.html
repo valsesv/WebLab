@@ -122,9 +122,9 @@
                 </thead>
                 <tbody>
                 <tr v-for="(result, index) in results" :key="index">
-                    <td>{{ result.xCoordinate }}</td>
-                    <td>{{ result.yCoordinate }}</td>
-                    <td>{{ result.radius }}</td>
+                    <td>{{ result.coordinates.x }}</td>
+                    <td>{{ result.coordinates.y }}</td>
+                    <td>{{ result.coordinates.r }}</td>
                     <td>{{ result.result }}</td>
                 </tr>
                 </tbody>

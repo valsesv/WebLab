@@ -70,8 +70,7 @@ var startPage = new Vue({
             window.location.href = "index.html";
         },
         getPoints(){
-            return;
-            fetch(`/getResultElementsByUsername?username=${"man"}`, {
+            fetch(`/getResultElementsByUsername?username=${this.username}`, {
                 method: 'GET',
             })
                 .then(response => {
@@ -83,6 +82,7 @@ var startPage = new Vue({
                 .then(data => {
                     // Handle the successful response from the backend
                     this.results = data;
+                    console.log(data);
                 })
                 .catch(error => {
                     // Handle errors if the request fails
