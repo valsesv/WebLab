@@ -14,7 +14,6 @@ var startPage = new Vue({
         results: [],
         alertMessage: '',
         username: localStorage.getItem('username')
-
     },
     methods: {
         checkPoint() {
@@ -37,7 +36,8 @@ var startPage = new Vue({
             const data = {
                 x: this.xCoordinate,
                 y: this.yCoordinate,
-                r: this.radius
+                r: this.radius,
+                username: this.username
             };
 
             // Make an HTTP POST request to your Spring backend

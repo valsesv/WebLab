@@ -22,14 +22,14 @@ public class AreaCheckController {
 
     private ResultElement addElement(Coordinates coordinates) throws SQLException {
         String res = AreaChecker.Check(coordinates);
-        ResultElement resultElement = new ResultElement(coordinates, res, "man");
+        ResultElement resultElement = new ResultElement(coordinates, res);
         SaveToDB(resultElement);
         return resultElement;
     }
 
     private void SaveToDB(ResultElement resultElement) throws SQLException {
         // SQL query to insert data into the database
-        String sql = "INSERT INTO result_elements(x, y, r, result, username) VALUES(?,?,?,?, ?)";
+        String sql = "INSERT INTO result_elements(x, y, r, result, username) VALUES(?,?,?,?,?)";
 
         try (Connection conn = DriverManager.getConnection(DbData.url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -38,7 +38,7 @@ public class AreaCheckController {
             pstmt.setDouble(2, resultElement.coordinates().y);
             pstmt.setDouble(3, resultElement.coordinates().r);
             pstmt.setString(4, resultElement.result());
-            pstmt.setString(5, resultElement.username());
+            pstmt.setString(5, resultElement.coordinates().username);
 
             // Execute the insert statement
             pstmt.executeUpdate();

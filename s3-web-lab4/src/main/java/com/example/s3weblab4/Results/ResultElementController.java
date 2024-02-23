@@ -43,9 +43,10 @@ public class ResultElementController {
                 coordinates.x = rs.getFloat("x");
                 coordinates.y = rs.getFloat("y");
                 coordinates.r = rs.getFloat("r");
+                coordinates.username = rs.getString("username");
                 String result = rs.getString("result");
 
-                ResultElement resultElement = new ResultElement(coordinates, result, username);
+                ResultElement resultElement = new ResultElement(coordinates, result);
 
                 // Add the result element to the list
                 resultList.add(resultElement);
