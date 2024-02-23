@@ -9,8 +9,6 @@ import java.sql.*;
 @RestController
 public class AreaCheckController {
 
-
-
     @PostMapping("/sendDataToBackend")
     public ResponseEntity<?> sendDataToBackend(@RequestBody Coordinates coordinates) {
         try {

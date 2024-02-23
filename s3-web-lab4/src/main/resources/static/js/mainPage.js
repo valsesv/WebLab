@@ -66,7 +66,8 @@ new Vue({
             window.location.href = "index.html";
         },
         getPoints(){
-            fetch(`/getResultElementsByUsername?username=${this.username}`, {
+            return;
+            fetch(`/getResultElementsByUsername?username=${"man"}`, {
                 method: 'GET',
             })
                 .then(response => {
@@ -84,5 +85,9 @@ new Vue({
                     console.error('Error:', error);
                 });
         }
-    }
+    },
+    mounted() {
+
+        this.getPoints();
+    },
 });

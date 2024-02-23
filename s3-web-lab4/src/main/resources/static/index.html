@@ -21,7 +21,7 @@
 
         <main>
             <h2 class="login-header">Login</h2>
-            <form @submit.prevent="login" class="login-form">
+            <form class="login-form">
                 <div class="input-group">
                     <input type="text" v-model="username" placeholder="Username" required>
                 </div>
@@ -29,7 +29,7 @@
                     <input type="password" v-model="password" placeholder="Password" required>
                 </div>
                 <div class="button-group">
-                    <button type="submit">Login</button>
+                    <button @click="login">Login</button>
                     <button @click="register">Register</button>
                 </div>
             </form>

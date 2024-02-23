@@ -10,12 +10,69 @@ const startPage = new Vue({
     },
     methods: {
         login() {
-            window.location.href = "mainPage.html";
-            this.isLoggedIn = true;
+            const userData = {
+                username: this.username,
+                password: this.password
+            };
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    if (data === 'Login successful') {
+                        this.isLoggedIn = true;
+                        window.location.href = "mainPage.html";
+                    } else {
+                        alert(data); // Display the error message
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to login. Please try again later.');
+                });
         },
         register() {
-            // Здесь можно добавить логику для перехода на страницу регистрации или открытия модального окна
-            alert('Registration functionality is not implemented yet.');
+            const userData = {
+                username: this.username,
+                password: this.password
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    if (data === 'Registration successful') {
+                        // Automatically login after successful registration
+                        console.log(data);
+                        this.login();
+                    } else {
+                        alert(data); // Display the error message
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to register. Please try again later.');
+                });
         }
     }
 });
