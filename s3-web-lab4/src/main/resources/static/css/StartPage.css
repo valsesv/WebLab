@@ -50,6 +50,11 @@ input[type="password"] {
     margin-top: 10px;
 }
 
+.alert-text {
+    margin-top: 10px;
+    color: red; /* Set the color to red */
+}
+
 button {
     padding: 10px 20px;
     background-color: #007bff;

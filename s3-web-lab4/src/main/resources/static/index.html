@@ -21,7 +21,7 @@
 
         <main>
             <h2 class="login-header">Login</h2>
-            <form class="login-form">
+            <form @submit.prevent="login" class="login-form">
                 <div class="input-group">
                     <input type="text" v-model="username" placeholder="Username" required>
                 </div>
@@ -30,8 +30,9 @@
                 </div>
                 <div class="button-group">
                     <button @click="login">Login</button>
-                    <button @click="register">Register</button>
+                    <button @click.prevent="register" @click="register">Register</button>
                 </div>
+                <div class="alert-text">{{ loginMessage }}</div>
             </form>
         </main>
 

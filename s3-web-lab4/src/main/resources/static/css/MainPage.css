@@ -106,14 +106,15 @@ polygon, path {
 
 /* Options Section */
 .options-section {
-    flex-basis: 30%; /* Adjust the width of the options section */
+    flex-basis: 70%; /* Adjust the width of the options section */
     padding: 10px;
     background-color: #f0f0f0; /* Light gray background color */
 }
 
 /* Image Section */
 .image-section {
-    flex-basis: 60%; /* Adjust the width of the image section */
+    flex-basis: 100%; /* Adjust the width of the image section */
+    margin-left: 80px;
     padding: 10px;
 }
 
@@ -142,4 +143,9 @@ table, th, td {
 /* CSS for alert text */
 .alert-text {
     color: red; /* Set the color to red */
+}
+
+.username-container {
+    flex-basis: 15%;
+    margin-right: auto; /* Pushes the username to the left */
 }

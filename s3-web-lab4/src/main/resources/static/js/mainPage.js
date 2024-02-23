@@ -1,4 +1,4 @@
-new Vue({
+var startPage = new Vue({
     el: '#mainPage',
     data: {
         fullName: 'Demidovich Vseslav',
@@ -12,7 +12,9 @@ new Vue({
         yMax: 3,
         radiusOptions: [ -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2],
         results: [],
-        alertMessage: ''
+        alertMessage: '',
+        username: localStorage.getItem('username')
+
     },
     methods: {
         checkPoint() {
@@ -63,6 +65,8 @@ new Vue({
                 });
         },
         logout() {
+            localStorage.setItem('isLoggedIn', "false");
+            localStorage.setItem('username', '');
             window.location.href = "index.html";
         },
         getPoints(){
@@ -87,7 +91,10 @@ new Vue({
         }
     },
     mounted() {
-
         this.getPoints();
     },
 });
+
+if (localStorage.getItem('isLoggedIn') === "false") {
+    startPage.logout();
+}

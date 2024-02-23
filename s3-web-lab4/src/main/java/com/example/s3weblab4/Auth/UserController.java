@@ -23,7 +23,7 @@ public class UserController {
                     if (resultSet.next()) {
                         return ResponseEntity.ok().body("Login successful");
                     } else {
-                        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+                        return ResponseEntity.ok().body("Invalid username or password");
                     }
                 }
             }
@@ -36,7 +36,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User userDTO) {
         if (doesUserExist(userDTO.username)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists");
+            return ResponseEntity.ok().body("Username already exists");
         }
 
         saveUser(userDTO);

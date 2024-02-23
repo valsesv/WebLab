@@ -1,3 +1,5 @@
+const disappearDelay = 5000;
+
 const startPage = new Vue({
     el: '#startPage',
     data: {
@@ -6,6 +8,7 @@ const startPage = new Vue({
         variantNumber: '423315',
         username: '',
         password: '',
+        loginMessage: '',
         isLoggedIn: false
     },
     methods: {
@@ -30,10 +33,12 @@ const startPage = new Vue({
                 })
                 .then(data => {
                     if (data === 'Login successful') {
-                        this.isLoggedIn = true;
-                        window.location.href = "mainPage.html";
+                        this.setUser();
                     } else {
-                        alert(data); // Display the error message
+                        this.loginMessage = data;
+                        setTimeout(() => {
+                            this.loginMessage = '';
+                        }, disappearDelay);
                     }
                 })
                 .catch(error => {
@@ -64,15 +69,24 @@ const startPage = new Vue({
                     if (data === 'Registration successful') {
                         // Automatically login after successful registration
                         console.log(data);
-                        this.login();
+                        this.setUser();
                     } else {
-                        alert(data); // Display the error message
+                        this.loginMessage = data;
+                        setTimeout(() => {
+                            this.loginMessage = '';
+                        }, disappearDelay);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Failed to register. Please try again later.');
                 });
+        },
+        setUser(){
+            this.isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', "true");
+            localStorage.setItem('username', this.username);
+            window.location.href = "mainPage.html";
         }
     }
 });
