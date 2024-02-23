@@ -17,7 +17,7 @@ var startPage = new Vue({
     },
     methods: {
         checkPoint() {
-            if (!this.xCoordinate) {
+            if (isNaN(this.xCoordinate)) {
                 this.alertMessage = 'Please select X coordinate.';
                 return;
             }
@@ -27,7 +27,7 @@ var startPage = new Vue({
                 return;
             }
 
-            if (!this.radius) {
+            if (isNaN(this.radius)) {
                 this.alertMessage = 'Please select R coordinate.';
                 return;
             }
@@ -55,8 +55,7 @@ var startPage = new Vue({
                     return response.json();
                 })
                 .then(data => {
-                    // Handle the successful response from the backend
-                    this.alertMessage = data;
+                    this.updateUserPoints();
                 })
                 .catch(error => {
                     // Handle errors if the request fails
@@ -69,7 +68,7 @@ var startPage = new Vue({
             localStorage.setItem('username', '');
             window.location.href = "index.html";
         },
-        getPoints(){
+        updateUserPoints(){
             fetch(`/getResultElementsByUsername?username=${this.username}`, {
                 method: 'GET',
             })
@@ -82,16 +81,57 @@ var startPage = new Vue({
                 .then(data => {
                     // Handle the successful response from the backend
                     this.results = data;
-                    console.log(data);
+                    this.drawPoints();
                 })
                 .catch(error => {
                     // Handle errors if the request fails
                     console.error('Error:', error);
                 });
+        },
+        drawPoints() {
+            // Get reference to the SVG container
+            const svg = document.getElementById('coordinatePanel');
+            let R = this.radius;
+
+            const circles = svg.querySelectorAll('circle');
+            circles.forEach(circle => {
+                circle.parentNode.removeChild(circle);
+            });
+
+            // Iterate over results array and draw points on SVG
+            this.results.forEach(result => {
+                if (result.coordinates.r === this.radius){
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+
+                    let x = result.coordinates.x;
+                    let y = result.coordinates.y;
+
+                    let normalizedX = 200 + x * 150 / R;
+                    let normalizedY = 200 - y * 150 / R;
+
+                    // Set circle attributes based on result
+                    circle.setAttribute('cx', normalizedX);
+                    circle.setAttribute('cy', normalizedY);
+                    circle.setAttribute('r', "3");
+
+                    if (result.result === "true") {
+                        circle.setAttribute("fill", "white");
+                    } else {
+                        circle.setAttribute("fill", "#e42575");
+                    }
+                    // Add outline
+                    circle.setAttribute('stroke', 'black');
+                    circle.setAttribute('stroke-width', '1');
+
+                    // Append circle to SVG container
+                    svg.appendChild(circle);
+                }
+            });
+
         }
     },
     mounted() {
-        this.getPoints();
+        this.updateUserPoints();
     },
 });
 

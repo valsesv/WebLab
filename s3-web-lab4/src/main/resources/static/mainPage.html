@@ -45,7 +45,7 @@
                 <p>Select R:</p>
                 <div>
                     <label v-for="rCoord in radiusOptions" :key="rCoord">
-                        <input type="radio" v-model="radius" :value="rCoord">
+                        <input @change="drawPoints" type="radio" v-model="radius" :value="rCoord">
                         {{ rCoord }}
                     </label>
                 </div>
